@@ -2,6 +2,7 @@
 <?php
 include('insert/connect.php');
 include('function/common_function.php');
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +16,11 @@ include('function/common_function.php');
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <!--css link-->
 <link rel="stylesheet" href="style.css">
+<style>
+  body{
+    overflow-x:hidden ;
+  }
+</style>
     </head>
 
 <body>
@@ -36,7 +42,7 @@ include('function/common_function.php');
           <a class="nav-link" href="display_all.php">Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Register</a>
+          <a class="nav-link" href="./users_area/user_registration.php">Register</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
@@ -190,7 +196,7 @@ getbrands();
 </li> -->
 </ul>
 
-<!--ccategories to be displayed-->
+<!--categories to be displayed-->
 <ul class="navbar-nav me-auto text-center">
  <li class="nav-item bg-info">
   <a href="#" class="nav-link text-light"><h4>Categories</h4></a>

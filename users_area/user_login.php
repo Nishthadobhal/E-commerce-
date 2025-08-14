@@ -1,3 +1,8 @@
+
+<?php
+include('../insert/connect.php');
+include('../function/common_function.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +11,12 @@
     <title>Document</title>
      <!-- bootstrap css link -->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-</head>
+<style>
+    body{
+        overflow-x:hidden;
+    }
+</style>
+    </head>
 <body>
     <div class="container-fluid my-3">
         <h2 class='text-center'>User Login</h2>
@@ -43,3 +53,45 @@ Password
     </div>
 </body>
 </html>
+
+<?php
+if(isset($_POST['user_login'])){
+$user_username=$_POST['user_username'];
+$user_password=$_POST['user_password'];
+
+$select_query="select * from `user_table` where username='$user_username'";
+$result=mysqli_query($con,$select_query);
+$row_count=mysqli_num_rows($result);
+$row_data=mysqli_fetch_assoc($result);
+$user_ip=get_client_ip();
+
+//cart items
+$select_query_cart="select * from `cart_details` where ip_address='$user_ip' ";
+$select_cart=mysqli_query($con,$select_query_cart);
+$row_count_cart=mysqli_num_rows($select_cart);
+if($row_count>0){  //if the user is present
+       $_SESSION['username']=$username;
+    //data prsenet in db
+if(password_verify($user_password,$row_data['password'])){
+    if($row_count==1 and $row_count_cart==0){   //if the user don't have anything in the cart
+   $_SESSION['username']=$username;
+        echo "<script>alert('login successfuly')</script>";
+echo "<script>window.open('profile.php','_self')</script>";
+}else{
+       $_SESSION['username']=$username;
+    echo "<script>alert('login successfuly')</script>";
+echo "<script>window.open('payment.php','_self')</script>";
+}
+}
+
+else{
+  echo "<script>alert('invalid credentials')</script>";  
+}
+}else{
+//not present in db
+echo "<script>alert('invalid credentials')</script>";
+
+}
+
+}
+?>

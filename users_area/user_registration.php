@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../insert/connect.php');
 include('../function/common_function.php');
 ?>
@@ -123,7 +124,6 @@ else{
 move_uploaded_file($user_image_tmp,"./user_images/$user_image");
 $insert_query="insert into `user_table` (username,password,user_email,user_image,user_ip,user_address,user_mobile)
 values ('$username','$hash_password','$user_email','$user_image','$user_ip','$user_address','$user_contact')";
-}
 
 $sql_execute=mysqli_query($con,$insert_query);
 if($sql_execute){
@@ -131,6 +131,9 @@ if($sql_execute){
 }else{
     die(mysqli_error($con));
 }
+}
+
+
 
 //selecting cart items - if user is not logged in
 $select_cart_items="select * from  `cart_details` where 
@@ -138,9 +141,9 @@ ip_address='$user_ip'";
 $result_cart=mysqli_query($con,$select_cart_items);
 $rows_count=mysqli_num_rows($result_cart);
 if($rows_count>0){
-    $_SESSION['username']=$user_username;
+    $_SESSION['username']=$username;
     echo "<script>alert('you have items in your cart')</script>";
-echo "<script>alert('checkout.php','_self ')</script>";
+echo "<script>window.open('checkout.php','_self ')</script>";
 }else{
    echo "<script>alert('../index.php','_self ')</script>"; 
 }
