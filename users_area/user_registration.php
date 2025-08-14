@@ -132,7 +132,7 @@ if($sql_execute){
     die(mysqli_error($con));
 }
 
-//selecting cart items
+//selecting cart items - if user is not logged in
 $select_cart_items="select * from  `cart_details` where 
 ip_address='$user_ip'";
 $result_cart=mysqli_query($con,$select_cart_items);
@@ -142,7 +142,7 @@ if($rows_count>0){
     echo "<script>alert('you have items in your cart')</script>";
 echo "<script>alert('checkout.php','_self ')</script>";
 }else{
-   echo "<script>alert('checkout.php','_self ')</script>"; 
+   echo "<script>alert('../index.php','_self ')</script>"; 
 }
 
 
