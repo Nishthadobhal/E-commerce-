@@ -130,18 +130,18 @@ if($sql_execute){
     echo "<script>alert('Data inserted successfully')</script>";
 }else{
     die(mysqli_error($con));
+} 
 }
-}
 
 
 
-//selecting cart items - if user is not logged in
+//selecting cart items 
 $select_cart_items="select * from  `cart_details` where 
 ip_address='$user_ip'";
 $result_cart=mysqli_query($con,$select_cart_items);
 $rows_count=mysqli_num_rows($result_cart);
 if($rows_count>0){
-    $_SESSION['username']=$username;
+    $_SESSION['username']=$username; //session start 
     echo "<script>alert('you have items in your cart')</script>";
 echo "<script>window.open('checkout.php','_self ')</script>";
 }else{

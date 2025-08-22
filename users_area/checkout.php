@@ -1,5 +1,6 @@
 <!--connect file-->
 <?php
+session_start();
 include('../insert/connect.php');
 ?>
 <!DOCTYPE html>
@@ -29,13 +30,13 @@ include('../insert/connect.php');
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+          <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="display_all.php">Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Register</a>
+          <a class="nav-link" href="user_registration.php">Register</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
@@ -57,12 +58,27 @@ include('../insert/connect.php');
 <!--second child-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
 <ul class="navbar-nav me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="#"> Welcome Guest </a>
-  </li>
-  <li class="nav-item">
-<a class="nav-link" href="#">Login</a>
-  </li>
+<?php
+if(!isset($_SESSION['username'])){
+  echo "    <li class='nav-item'>
+    <a class='nav-link' href='#'> Welcome Guest </a>
+  </li>";
+}else{
+  echo "    <li class='nav-item'>
+    <a class='nav-link' href='#'> Welcome ".$_SESSION['username']." </a>
+  </li>";
+}
+
+if(!isset($_SESSION['username'])){
+  echo "    <li class='nav-item'>
+    <a class='nav-link' href='users_area\user_login.php'> Login </a>
+  </li>";
+}else{
+  echo  "    <li class='nav-item'>
+    <a class='nav-link' href='users_area\logout.php'> Logout </a>
+  </li>";
+}
+?>
 </ul>
 </nav>
 
@@ -80,7 +96,7 @@ include('../insert/connect.php');
 <!--products-->
 <div class="row">
     <?php
- if(!isset($_SESSION['username'])){
+ if(!isset($_SESSION['username'])){  //used to  check whether the user is logged in or not..
 include('user_login.php');
  }else{
     include('payment.php');

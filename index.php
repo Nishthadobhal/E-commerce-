@@ -62,7 +62,7 @@ session_start();
   getproduct() vala function jo hai vha if condition lgado ki agar search isset nhi h toh vo chlega aur all product dikhenge nhi toh only searched products dikhenge cal search_products() function   .. 
   way2: SEARCHPRODUCT.PHP FILE ADD KRDO ISKE ACTION M  -->
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_data"/>
-        <!-- <button class="btn btn-outline-light" type="submit">Search</button> -->
+   
 
 <!--inside this when we search the keyword after submittig this input field  the products which will match from the databse will appear on the screen.-->
 <input type="submit" name="search_data_product" value="search" class="btn-outline-light">
@@ -79,12 +79,28 @@ cart();
 <!--second child-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
 <ul class="navbar-nav me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="#"> Welcome Guest </a>
-  </li>
-  <li class="nav-item">
-<a class="nav-link" href="./users_area/user_login.php">Login</a>
-  </li>
+<?php
+if(!isset($_SESSION['username'])){
+  echo "    <li class='nav-item'>
+    <a class='nav-link' href='#'> Welcome Guest </a>
+  </li>";
+}else{
+  echo "    <li class='nav-item'>
+    <a class='nav-link' href='#'> Welcome ".$_SESSION['username']." </a>
+  </li>";
+}
+
+if(!isset($_SESSION['username'])){
+  echo "    <li class='nav-item'>
+    <a class='nav-link' href='./users_area/user_login.php'> Login </a>
+  </li>";
+}else{
+  echo  "    <li class='nav-item'>
+    <a class='nav-link' href='./users_area/user_login.php'> Logout </a>
+  </li>";
+}
+?>
+
 </ul>
 </nav>
 
