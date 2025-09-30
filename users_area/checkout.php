@@ -1,7 +1,8 @@
 <!--connect file-->
 <?php
-session_start();
+
 include('../insert/connect.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,27 +59,22 @@ include('../insert/connect.php');
 <!--second child-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
 <ul class="navbar-nav me-auto">
-<?php
-if(!isset($_SESSION['username'])){
-  echo "    <li class='nav-item'>
-    <a class='nav-link' href='#'> Welcome Guest </a>
-  </li>";
-}else{
-  echo "    <li class='nav-item'>
-    <a class='nav-link' href='#'> Welcome ".$_SESSION['username']." </a>
+  <li class="nav-item">
+<a class="nav-link" href="#">Welcome Guest</a>
+  </li>
+  <?php
+if(!isset($_SESSION['username'])){//if not  logged in
+  echo "<li class='nav-item'>
+<a class='nav-link' href='./user_login.php'>login</a>
   </li>";
 }
-
-if(!isset($_SESSION['username'])){
-  echo "    <li class='nav-item'>
-    <a class='nav-link' href='users_area\user_login.php'> Login </a>
-  </li>";
-}else{
-  echo  "    <li class='nav-item'>
-    <a class='nav-link' href='users_area\logout.php'> Logout </a>
+else{
+  echo "<li class='nav-item'>
+<a class='nav-link' href='./logout.php'>logout</a>
   </li>";
 }
 ?>
+
 </ul>
 </nav>
 
