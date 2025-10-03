@@ -56,6 +56,11 @@ session_start();
           <a class="nav-link" href="#">Total Price:<?php total_cart_price(); ?>/-</a>
         </li>
 
+         <li class="nav-item">
+          <a class="nav-link" href="./users_area/profile.php">Profile</a>
+        </li>
+
+
       </ul>
       <form class="d-flex" role="search" action="" method="get">
 <!--agar hame searchproduct vali different file attach na krke ishime add krnna tha toh another way was:
