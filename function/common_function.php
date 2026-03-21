@@ -1,7 +1,5 @@
 <?php
-//including mysql connection file
-// include('./insert/connect.php');
-//getting products
+
 function getproducts(){
     global $con;// use global keyword for declaring $con globally
 
@@ -19,15 +17,15 @@ $product_image1=$row['product_image1'];
 $product_price=$row['product_price'];
 $category_id=$row['category_id'];
 $brand_id=$row['brand_id'];
-echo " <div class='col-md-4 mb-2' >
+echo " <div class='col-md-4 col-lg-3 mb-4' >
      <div class='card' style='width: 18rem;'>
   <img src='./admin_area/product_images/$product_image1' class='card-img-top' alt='$product_title'>
   <div class='card-body'>
     <h5 class='card-title'>$product_title</h5>
     <p class='card-text'>$product_description</p>
        <p class='card-text'>Price: $product_price/-</p>
-    <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Add to Cart</a>
-     <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
+    <a href='index.php?add_to_cart=$product_id' class='btn btn-dark'>Add to Cart</a>
+     <a href='product_details.php?product_id=$product_id' class='btn btn-outline-dark'>View more</a>
   </div>
 </div>
   </div>";
@@ -54,15 +52,15 @@ $product_image1=$row['product_image1'];
 $product_price=$row['product_price'];
 $category_id=$row['category_id'];
 $brand_id=$row['brand_id'];
-echo " <div class='col-md-4 mb-2' >
+echo " <div class='col-md-4 col-lg-3 mb-4' >
      <div class='card' style='width: 18rem;'>
   <img src='./admin_area/product_images/$product_image1' class='card-img-top' alt='$product_title'>
   <div class='card-body'>
     <h5 class='card-title'>$product_title</h5>
     <p class='card-text'>$product_description</p>
      <p class='card-text'>Price: $product_price/-</p>
-    <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Add to Cart</a>
-     <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
+    <a href='index.php?add_to_cart=$product_id' class='btn btn-dark'>Add to Cart</a>
+     <a href='product_details.php?product_id=$product_id' class='btn btn-outline-dark'>View more</a>
   </div>
 </div>
   </div>";
@@ -95,15 +93,15 @@ $product_image1=$row['product_image1'];
 $product_price=$row['product_price'];
 $category_id=$row['category_id'];
 $brand_id=$row['brand_id'];
-echo " <div class='col-md-4 mb-2' >
+echo " <div class='col-md-4 col-lg-3 mb-4' >
      <div class='card' style='width: 18rem;'>
   <img src='./admin_area/product_images/$product_image1' class='card-img-top' alt='$product_title'>
   <div class='card-body'>
     <h5 class='card-title'>$product_title</h5>
     <p class='card-text'>$product_description</p>
      <p class='card-text'>Price: $product_price/-</p>
-  <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Add to Cart</a>
-   <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
+  <a href='index.php?add_to_cart=$product_id' class='btn btn-dark'>Add to Cart</a>
+   <a href='product_details.php?product_id=$product_id' class='btn btn-outline-dark'>View more</a>
   </div>
 </div>
   </div>";
@@ -130,15 +128,15 @@ $product_image1=$row['product_image1'];
 $product_price=$row['product_price'];
 $category_id=$row['category_id'];
 $brand_id=$row['brand_id'];
-echo " <div class='col-md-4 mb-2' >
+echo " <div class='col-md-4 col-lg-3 mb-4' >
      <div class='card' style='width: 18rem;'>
   <img src='./admin_area/product_images/$product_image1' class='card-img-top' alt='$product_title'>
   <div class='card-body'>
     <h5 class='card-title'>$product_title</h5>
     <p class='card-text'>$product_description</p>
      <p class='card-text'>Price: $product_price/-</p>
-   <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Add to Cart</a>
-    <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
+   <a href='index.php?add_to_cart=$product_id' class='btn btn-dark'>Add to Cart</a>
+    <a href='product_details.php?product_id=$product_id' class='btn btn-outline-dark'>View more</a>
   </div>
 </div>
   </div>";
@@ -155,7 +153,7 @@ while($row_data=mysqli_fetch_assoc($result_brands)){
   $brand_title=$row_data['brand_title'];
   $brand_id=$row_data['brand_id'];
 echo "<li class='nav-item'>
-  <a href='index.php?brand=$brand_id' class='nav-link text-light'>$brand_title</a>
+  <a href='index.php?brand=$brand_id' class='nav-link text-dark'>$brand_title</a>
 </li>";
 }}
 
@@ -168,7 +166,7 @@ while($row_data=mysqli_fetch_assoc($result_category)){
 $category_id=$row_data['category_id'];
 $category_title=$row_data['category_title'];
 echo "<li class='nav-item'>
-  <a href='index.php?category=$category_id' class='nav-link text-light'>$category_title</a>
+  <a href='index.php?category=$category_id' class='nav-link text-dark'>$category_title</a>
 </li>";
 }
 }
@@ -193,15 +191,15 @@ $product_image1=$row['product_image1'];
 $product_price=$row['product_price'];
 $category_id=$row['category_id'];
 $brand_id=$row['brand_id'];
-echo " <div class='col-md-4 mb-2' >
+echo " <div class='col-md-4 col-lg-3 mb-4' >
      <div class='card' style='width: 18rem;'>
   <img src='./admin_area/product_images/$product_image1' class='card-img-top' alt='$product_title'>
-  <div class='card-body'>
+<div class='card-body text-center'>
     <h5 class='card-title'>$product_title</h5>
     <p class='card-text'>$product_description</p>
-     <p class='card-text'>Price: $product_price/-</p>
-   <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Add to Cart</a>
-<a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
+<p class='card-text text-success fw-bold'>₹$product_price</p>
+   <a href='index.php?add_to_cart=$product_id' class='btn btn-dark'>Add to Cart</a>
+<a href='product_details.php?product_id=$product_id' class='btn btn-outline-dark'>View more</a>
   </div>
 </div>
   </div>";
@@ -233,15 +231,15 @@ $product_image3=$row['product_image3'];
 $product_price=$row['product_price'];
 $category_id=$row['category_id'];
 $brand_id=$row['brand_id'];
-echo " <div class='col-md-4 mb-2' >
+echo " <div class='col-md-4 col-lg-3 mb-4' >
      <div class='card' style='width: 18rem;'>
   <img src='./admin_area/product_images/$product_image1' class='card-img-top' alt='$product_title'>
   <div class='card-body'>
     <h5 class='card-title'>$product_title</h5>
     <p class='card-text'>$product_description</p>
      <p class='card-text'>Price: $product_price/-</p>
-    <a href='index.php?add_to_cart=$product_id' class='btn btn-info'>Add to Cart</a>
-     <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
+    <a href='index.php?add_to_cart=$product_id' class='btn btn-dark'>Add to Cart</a>
+     <a href='product_details.php?product_id=$product_id' class='btn btn-outline-dark'>View more</a>
   </div>
 </div>
   </div>
@@ -279,16 +277,31 @@ function get_client_ip() {
     return $ip;
 }
 
+function get_cart_condition(){
+    $user_id = $_SESSION['user_id'] ?? null;
+    $ip = get_client_ip();
+
+    if($user_id){
+        return "user_id=$user_id";
+    } else {
+        return "ip_address='$ip'";
+    }
+}
 // echo "Client IP Address: " . get_client_ip();
 
 
 //cart function 
 function cart(){
+  global $con;
   if(isset($_GET['add_to_cart'])){
-    global $con;
     $ip=get_client_ip();
     $get_product_id=$_GET['add_to_cart'];
-    $select_query="select * from `cart_details` where ip_address='$ip' and product_id=$get_product_id ";
+    // Get current logged in user ID
+        $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
+   $select_query = "SELECT * FROM `cart_details` 
+                     WHERE product_id = '$get_product_id' 
+                     AND (user_id = '$user_id' OR ip_address = '$ip')";
+
     $result_query=mysqli_query($con,$select_query);
     $num_of_rows=mysqli_num_rows($result_query);
     if($num_of_rows>0){ //if already present h toh add matt kro cart mai
@@ -296,10 +309,17 @@ function cart(){
 echo "<script>window.open('index.php','_self')</script>"; //window will redirect into index page and open in the same tab 
     }
     else{
-      $insert_query="insert into `cart_details` (product_id,ip_address,quantity) values ($get_product_id,'$ip',1)";
+
+      $user_id = $_SESSION['user_id']??NULL;
+      $insert_query = "INSERT INTO `cart_details` (user_id, product_id, ip_address, quantity)
+VALUES (".($user_id ? $user_id : "NULL").", '$get_product_id', '$ip', 1)";
       $result_query=mysqli_query($con,$insert_query);
-        echo "<script>alert('Item is added  to  the cart')</script>";
-      echo "<script>window.open('index.php','_self')</script>";
+      if($result_query){
+        echo "<script>alert('Item is added to the cart')</script>";
+        echo "<script>window.open('index.php','_self')</script>";
+      } else {
+        echo "<script>alert('Error adding to cart')</script>";
+      }
     }
   }
 
@@ -309,8 +329,8 @@ echo "<script>window.open('index.php','_self')</script>"; //window will redirect
 function cart_item_num(){
 if(isset($_GET['add_to_cart'])){
     global $con;
-    $ip=get_client_ip();
-    $select_query="select * from `cart_details` where ip_address='$ip' ";
+   $condition = get_cart_condition();
+$select_query="select * from `cart_details` where $condition";
     $result_query=mysqli_query($con,$select_query);
     $count_cart_items=mysqli_num_rows($result_query);}
     else{
@@ -326,9 +346,10 @@ if(isset($_GET['add_to_cart'])){
   //total price
   function total_cart_price(){
 global $con;
-$ip=get_client_ip();
+
 $total=0;
-  $cart_query="select * from `cart_details` where ip_address='$ip'";
+ $condition = get_cart_condition();
+$cart_query="select * from `cart_details` where $condition";
 $result=mysqli_query($con,$cart_query);
 while($row=mysqli_fetch_array($result)){
 $product_id=$row['product_id'];
@@ -365,15 +386,54 @@ $user_id=$row_query['user_id'];
 if(!isset($_GET['edit_account'])){
   if(!isset($_GET['my_orders'])){
     if(!isset($_GET['delete_account'])){
-      $get_orders="select * from `user_orders` where user_id=$user_id and order_status='pending' ";
+     $get_orders="select * from `user_orders` where user_id=$user_id and order_status='unpaid'";
    $result_orders_query=mysqli_query($con,$get_orders);
    $row_count=mysqli_num_rows($result_orders_query);
    if($row_count>0){
-    echo "<h3 class='text-center text-success my-5'>you have <span class='text-danger'>$row_count</span>pending orders</h3>
-  <p class='text-center'><a href='profile.php?my_orders' class='text-dark'>Order Details</a></p> ";
+
+
+echo "
+<div class='d-flex justify-content-center align-items-center' style='height:60vh;'>
+
+  <div class='card p-5 text-center shadow' style='border-radius:20px; max-width:400px;'>
+
+    <i class='fa-solid fa-clock fa-3x text-warning mb-3'></i>
+
+<h4 class='mb-2'>
+  You have 
+  <span class='text-danger fw-bold'>$row_count</span> 
+  pending ".($row_count == 1 ? "order" : "orders")."
+</h4>
+    <p class='text-muted'>Your order is placed. Payment will be collected on delivery.</p>
+
+    <a href='profile.php?my_orders' class='btn btn-dark mt-3'>
+      View Orders
+    </a>
+
+  </div>
+
+</div>
+";
+
+
   }else{
-     echo "<h3 class='text-center text-success my-5'>you have zero pending orders</h3>
-  <p class='text-center'><a href='./index.php' class='text-dark'>Explore products</a></p> ";
+     echo "
+<div class='col-md-9 content-area d-flex justify-content-center align-items-center'>
+ <div class='card p-5 text-center border-0' style='max-width:480px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.08);'>
+
+    <i class='fa-solid fa-box-open fa-3x text-secondary mb-3'></i>
+
+    <h4 class='text-success mb-2'>No Pending Orders</h4>
+
+    <p class='text-muted'>You haven't placed any orders yet.</p>
+
+    <a href='../display_all.php' class='btn btn-dark mt-3 w-100 '>
+      Explore Products
+    </a>
+
+  </div>
+</div>
+";
   } 
     }
   }

@@ -1,185 +1,152 @@
-<!--connect file-->
 <?php
 include('../insert/connect.php');
 include('../function/common_function.php');
 session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- bootstrap css link -->
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-<!--font awesome link-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<!--css link-->
-<link rel="stylesheet" href="style.css">
-<style>
-  body{
-    overflow-x:hidden ;
-  }
-.profile_img{
-    width:90%;
-    margin:auto;
-    display:block;
-    object-fit:contain;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Profile</title>
 
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<!-- Main CSS -->
+<link rel="stylesheet" href="../style.css">
+
+<style>
+body{
+    background:#f5f7fa;
+    overflow-x:hidden;
 }
 
+/* SIDEBAR */
+.sidebar {
+      margin-top: 0;
+    background: #6c757d;
+   height: calc(100vh - 140px);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.sidebar-link {
+    display: block;
+    padding: 10px 15px;
+    margin: 6px 0;
+    color: #ddd;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.sidebar-link:hover {
+    background: #2c2c2c;
+    color: #fff;
+}
+
+.sidebar-link.active {
+    background: #0d6efd;
+    color: white;
+}
+.bg-light {
+    padding: 10px 0 !important;
+}
+
+/* CARD CENTER */
+.content-area {
+     min-height: calc(100vh - 200px);
+       padding-bottom: 30px;
+}
 </style>
-    </head>
+
+</head>
 
 <body>
-<!--nav bar-->
-<div class="container-fluid p-0 "> <!--container fluid take 100% of the width-->
-  <!--firstchild-->
-<nav class="navbar navbar-expand-lg bg-info">
-  <div class="container-fluid">
-    <img src="../logo_php.png" class="logo" width="5%">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../display_all.php">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="user_registration.php">Register</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../card.php"><i class="fa-solid fa-cart-shopping"></i><sup>
-            <?php
-       cart_item_num();?></sup></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Total Price:<?php total_cart_price(); ?>/-</a>
-        </li>
 
+<!-- NAVBAR -->
+<?php include('../navbar.php'); ?>
 
-      </ul>
-      <form class="d-flex" role="search" action="" method="get">
-<!--agar hame searchproduct vali different file attach na krke ishime add krnna tha toh another way was:
-  getproduct() vala function jo hai vha if condition lgado ki agar search isset nhi h toh vo chlega aur all product dikhenge nhi toh only searched products dikhenge cal search_products() function   .. 
-  way2: SEARCHPRODUCT.PHP FILE ADD KRDO ISKE ACTION M  -->
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_data"/>
-   
+<?php cart(); ?>
 
-<!--inside this when we search the keyword after submittig this input field  the products which will match from the databse will appear on the screen.-->
-<input type="submit" name="search_data_product" value="search" class="btn-outline-light">
-
-      </form>
-    </div>
-  </div>
-</nav>
-<!--calling cart function-->
-<?php
-cart();
-?>
-
-<!--second child-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-<ul class="navbar-nav me-auto">
-<?php
-if(!isset($_SESSION['username'])){
-  echo "    <li class='nav-item'>
-    <a class='nav-link' href='#'> Welcome Guest </a>
-  </li>";
-}else{
-  echo "    <li class='nav-item'>
-    <a class='nav-link' href='#'> Welcome ".$_SESSION['username']." </a>
-  </li>";
-}
-
-if(!isset($_SESSION['username'])){
-  echo "    <li class='nav-item'>
-    <a class='nav-link' href='user_login.php'> Login </a>
-  </li>";
-}else{
-  echo  "    <li class='nav-item'>
-    <a class='nav-link' href='logout.php'> Logout </a>
-  </li>";
-}
-?>
-
-</ul>
-</nav>
-
-
-<!--third child-->
-<div class="bg-light">
-  <h3 class="text-center">Hdiden Store</h3>
-  <p class="text-center">communications is  at the heart of e-commerce and community</p>
+<!-- PAGE TITLE -->
+<div class="bg-light py-2 text-center">
+<h4>My Account</h4>
+<p class="mb-0 text-muted">Manage your profile & orders</p>
 </div>
-<!--fourth child-->
+
+<!-- MAIN LAYOUT -->
+<div class="container-fluid  mt-0 mb-5">
 <div class="row">
-    <div class="col-md-2">
-        <ul class="navbar-nav bg-secondary text-center" style="height:100vh">
-            <li  class="nav-item bg-info">
-                <a  class="nav-link text-light" href="#">Your Profile</a>
-            </li>
+
+<!-- 🔥 SIDEBAR -->
+<div class="col-md-3">
+<div class="sidebar">
+
+<h5 class="text-center text-light mb-3">My Account</h5>
+
+<div class="text-center mb-4">
+<i class="fa-solid fa-user-circle fa-4x text-light"></i>
+<p class="text-light mt-2"><?php echo $_SESSION['username']; ?></p>
+</div>
+
+<a href="profile.php" class="sidebar-link <?php if(!isset($_GET['edit_account']) && !isset($_GET['my_orders']) && !isset($_GET['delete_account'])) echo 'active'; ?>">
+📦 Pending Orders
+</a>
+
+<a href="profile.php?edit_account" class="sidebar-link <?php if(isset($_GET['edit_account'])) echo 'active'; ?>">
+✏️ Edit Profile
+</a>
+
+<a href="profile.php?my_orders" class="sidebar-link <?php if(isset($_GET['my_orders'])) echo 'active'; ?>">
+🛒 My Orders
+</a>
+
+<a href="profile.php?delete_account" class="sidebar-link text-danger <?php if(isset($_GET['delete_account'])) echo 'active'; ?>">
+🗑 Delete Account
+</a>
+
+<a href="logout.php" class="sidebar-link text-warning">
+🚪 Logout
+</a>
+
+</div>
+</div>
+
+<!-- 🔥 CONTENT -->
+<div class="col-md-9 d-flex justify-content-center align-items-center content-area">
+
 <?php
-if (isset($_SESSION['user_id'])) {
-    $user_id = $_SESSION['user_id'];
+get_user_order_details();
 
-    $query = "SELECT user_image FROM `user_table` WHERE user_id=$user_id";
-    $result_image = mysqli_query($con, $query);
+if(isset($_GET['edit_account'])){
+    include('edit_account.php');
+}
 
-    if ($result_image && mysqli_num_rows($result_image) > 0) {
-        $row_image = mysqli_fetch_assoc($result_image);
-        $user_image = $row_image['user_image'];
+if(isset($_GET['my_orders'])){
+    include('user_orders.php');
+}
 
-        echo "<li class='nav-item'>
-                <img src='./user_images/$user_image' class='profile_img my-4' alt='Profile Image'>
-              </li>";
-    } else {
-        echo "<li class='nav-item text-light'>No profile image found</li>";
-    }
-} else {
-    echo "<li class='nav-item text-light'>Please login first</li>";
+if(isset($_GET['delete_account'])){
+    include('delete_account.php');
 }
 ?>
 
+</div>
 
-<li class="nav-item">
-    <a class="nav-link  text-light" href="profile.php">Pending Orders</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link  text-light" href="profile.php?edit_account">Edit Account</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link  text-light" href="profile.php?my_orders">My Orders</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link  text-light" href="profile.php?delete_account">Delete Account</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link  text-light" href="logout.php">Logout</a>
-</li>
-
-    </ul>
-    </div>
-<div class="col-md-10">
-   <?php  get_user_order_details();
-   if(isset($_GET['edit_account'])){
-    include('edit_account.php');
-   }
-   if(isset($_GET['my_orders'])){
-    include('user_orders.php');
-   }
-   ?>
 </div>
 </div>
 
-<!--last child include footer-->
-<?php
-include("../footer.php");
-?>
+<!-- FOOTER -->
+<?php include('../insert/footer.php'); ?>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

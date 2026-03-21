@@ -1,24 +1,170 @@
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+overflow-x:hidden;
+background:#f5f7fa;
+}
+.navbar .container-fluid{
+display:flex;
+align-items:center;
+gap:20px;
 }
 
 .logo{
-    width:4%;
-    height:4%;
+height:40px;
+object-fit:contain;
+image-rendering: -webkit-optimize-contrast;
+}
+
+.navbar form{
+max-width:500px;
+}
+
+.card{
+border:none;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+transition:transform 0.3s ease, box-shadow 0.3s ease;
+background:white;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.btn:hover{
+transform:scale(1.03);
 }
 .card-img-top{
-    width:100%;
-    height:200px;
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:8px 8px 0 0;
+}
+
+.card-title{
+font-weight:600;
+font-size:18px;
+}
+
+.card-text{
+color:#555;
+font-size:14px;
+}
+
+
+
+.btn{
+border-radius:6px;
+font-size:14px;
+padding:6px 14px;
+}
+
+
+
+.col-md-2{
+min-height:400px;
+
+padding-top:20px;
+border-radius:8px;
+}
+
+
+.col-md-2 h4{
+font-size:18px;
+margin-bottom:15px;
+}
+
+.col-md-2 a{
+display:block;
+padding:6px;
+}
+
+.col-md-2 ul{
+padding-top:10px;
+}
+
+.col-md-2 ul li a{
+font-size:15px;
+transition:0.2s;
+}
+
+.col-md-2 ul li a:hover{
+background:rgba(255,255,255,0.1);
+}
+
+
+
+.cart_img{
+width:50px;
+height:50px;
 object-fit:contain;
 }
-/* .admin_image{
-    width: 100px;
-   object-fit: contain; 
-} */
- .cart_img{
-    width: 5opx;
-    height: 50px;
- }
+.section-title{
+font-weight:600;
+margin-bottom:20px;
+border-bottom:2px solid #ddd;
+padding-bottom:8px;
+}
+
+.navbar{
+padding-left:10px;
+padding-right:10px;
+}
+
+
+footer{
+letter-spacing:0.5px;
+font-size:14px;
+}
+
+.sidebar{
+background:#1f2933;
+border-radius:12px;
+padding:20px;
+}
+
+.sidebar .nav-link{
+color:#d1d5db;
+font-size:15px;
+padding:8px 0;
+transition:0.2s;
+}
+
+.sidebar .nav-link:hover{
+color:#ffc107;
+padding-left:5px;
+}
+
+.sidebar .nav-item:first-child .nav-link{
+font-weight:600;
+font-size:16px;
+color:white;
+margin-bottom:10px;
+}
+@media(max-width:768px){
+
+.card-img-top{
+height:180px;
+}
+
+}
+
+.col-md-3 ul{
+margin-top:15px;
+}
+
+.col-md-3 li{
+margin-bottom:8px;
+}
+
+.col-md-3 a{
+font-size:15px;
+}
+

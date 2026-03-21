@@ -1,5 +1,6 @@
 <?php
 include('../insert/connect.php');
+include('admin_auth.php');
 if(isset($_POST['insert_cat'])){
   $category_title=$_POST['cat_title'];
 

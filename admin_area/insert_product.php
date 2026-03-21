@@ -1,6 +1,6 @@
 <?php
 include('../insert/connect.php');
-
+include('admin_auth.php');
 if(isset($_POST['insert_product'])){
     $product_title=$_POST['product_title'];
      $description=$_POST['description'];

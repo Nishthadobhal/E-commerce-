@@ -1,5 +1,7 @@
 <?php
 include('../insert/connect.php');
+
+include('admin_auth.php');
 if(isset($_POST['insert_brand'])){
   $brand_tit=$_POST['brand_title'];//iske andr vo ayega jo ham dalna chhate hai brand ke andr
   //if vo brandd alreaady present ho

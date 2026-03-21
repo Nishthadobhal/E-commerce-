@@ -1,3 +1,10 @@
+<?php
+include('../insert/connect.php');
+include('../function/common_function.php');
+include('admin_auth.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +21,17 @@
     .admin_image{
     width: 100px;
    object-fit: contain; 
+}
+.footer{
+    position:absolute;
+    bottom:0;
+}
+body{
+    overflow-x:hidden;
+}
+.product_img{
+    width: 100px;
+     object-fit: contain;
 }
 </style>
     </head>
@@ -48,15 +66,15 @@
         </div>
         <div class="button text-center">
 <button class="my-3"><a href="insert_product.php" class="nav-link text-light bg-info my-1">Insert Products</a></button>
-<button><a href="" class="nav-link text-light bg-info my-1">View Products</a></button>
+<button><a href="index.php?view_products" class="nav-link text-light bg-info my-1">View Products</a></button>
 <button><a href="index.php?insert_categories" class="nav-link text-light bg-info my-1">Insert Categories</a></button>
-<button><a href="" class="nav-link text-light bg-info my-1">View Categories</a></button>
+<button><a href="index.php?view_categories" class="nav-link text-light bg-info my-1">View Categories</a></button>
 <button><a href="index.php?insert_brands" class="nav-link text-light bg-info my-1">Insert Brands</a></button>
-<button><a href="" class="nav-link text-light bg-info my-1">View Brands</a></button>
-<button><a href="" class="nav-link text-light bg-info my-1">All Orders</a></button>
-<button><a href="" class="nav-link text-light bg-info my-1">All Payments</a></button>
-<button><a href="" class="nav-link text-light bg-info my-1">List Users</a></button>
-<button><a href="" class="nav-link text-light bg-info my-1">LogOut</a></button>
+<button><a href="index.php?view_brands" class="nav-link text-light bg-info my-1">View Brands</a></button>
+<button><a href="index.php?list_orders" class="nav-link text-light bg-info my-1">All Orders</a></button>
+<button><a href="index.php?list_payments" class="nav-link text-light bg-info my-1">All Payments</a></button>
+<button><a href="index.php?list_users" class="nav-link text-light bg-info my-1">List Users</a></button>
+<button><a href="admin_logout.php" class="nav-link text-light bg-info my-1">LogOut</a></button>
 
         </div>
     </div>
@@ -74,11 +92,64 @@ if(isset($_GET['insert_brands'])){
      // This block will run if the user clicked that link
   include('insert_brands.php') ; 
 }
+if(isset($_GET['view_products'])){
+     // This block will run if the user clicked that link
+  include('view_products.php') ; 
+}
+if(isset($_GET['edit_products'])){
+     // This block will run if the user clicked that link
+  include('edit_products.php') ; 
+}
+if(isset($_GET['delete_product'])){
+     // This block will run if the user clicked that link
+  include('delete_product.php') ; 
+}
+if(isset($_GET['view_categories'])){
+     // This block will run if the user clicked that link
+  include('view_categories.php') ; 
+}
+
+if(isset($_GET['view_brands'])){
+     // This block will run if the user clicked that link
+  include('view_brands.php') ; 
+}
+if(isset($_GET['edit_category'])){
+     // This block will run if the user clicked that link
+  include('edit_category.php') ; 
+}
+if(isset($_GET['delete_category'])){
+     // This block will run if the user clicked that link
+  include('delete_category.php') ; 
+}
+
+if(isset($_GET['edit_brand'])){
+     // This block will run if the user clicked that link
+  include('edit_brand.php') ; 
+}
+if(isset($_GET['delete_brand'])){
+     // This block will run if the user clicked that link
+  include('delete_brand.php') ; 
+}
+
+if(isset($_GET['list_orders'])){
+     // This block will run if the user clicked that link
+  include('list_orders.php') ; 
+}
+if(isset($_GET['list_payments'])){
+     // This block will run if the user clicked that link
+  include('list_payments.php') ; 
+}
+if(isset($_GET['list_users'])){
+     // This block will run if the user clicked that link
+  include('list_users.php') ; 
+}
 
 ?>
 </div>
 
-
+<?php
+include("../insert/footer.php");
+?>
 
 
 </div>
