@@ -1,5 +1,7 @@
 <?php
 session_start();
+$env = parse_ini_file(__DIR__ . '/../.env');
+putenv("MAIL_PASS=" . $env['MAIL_PASS']);
 include('../insert/connect.php');
 include('../function/common_function.php');
 if(!isset($_POST['send_otp']) && !isset($_POST['verify_otp']) && !isset($_POST['user_register'])){

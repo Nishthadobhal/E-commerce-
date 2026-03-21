@@ -1,4 +1,6 @@
 <?php
+$env = parse_ini_file(__DIR__ . '/../.env');
+putenv("MAIL_PASS=" . $env['MAIL_PASS']);
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -22,7 +24,7 @@ if(isset($_POST['send_email_otp'])){
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
             $mail->Username = 'cartify.project@gmail.com';
-            $mail->Password = 'agealttcfzqvyooq';
+            $mail->Password = getenv('MAIL_PASS');
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
 

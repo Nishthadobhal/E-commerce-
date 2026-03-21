@@ -25,7 +25,7 @@ echo " <div class='col-md-4 col-lg-3 mb-4' >
     <p class='card-text'>$product_description</p>
        <p class='card-text'>Price: $product_price/-</p>
     <a href='index.php?add_to_cart=$product_id' class='btn btn-dark'>Add to Cart</a>
-     <a href='product_details.php?product_id=$product_id' class='btn btn-outline-dark'>View more</a>
+   
   </div>
 </div>
   </div>";
