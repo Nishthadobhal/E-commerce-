@@ -19,14 +19,29 @@ if($result_cat){
 }
 }
 ?>
-<div class="container mt-3">
-    <h1 class="text-center">Edit Category</h1>
-    <form action="" method="post" class="text=center">
-<div class="form-outline mb-4 w-50 m-auto">
-    <label for="category_title" class="form-label">Category Title</label>
-<input type="text" name="category_title" id="category_title" class="form-control"
-require="required" value='<?php echo $category_title ?>'>
-</div>
-<input type="submit" value="update category" class="btn btn-info px-3 mb-3" name="edit_cat">
+<div class="d-flex justify-content-center mt-4">
+
+<div class="card shadow p-4" style="max-width: 450px; width: 100%; border-radius: 12px;">
+
+    <h4 class="text-center mb-4">Edit Category</h4>
+
+    <form action="" method="post">
+
+        <div class="mb-3">
+            <label class="form-label">Category Title</label>
+            <input type="text" 
+                   name="category_title" 
+                   class="form-control"
+                   value="<?php echo $category_title ?>" 
+                   required>
+        </div>
+
+        <button class="btn btn-dark w-100 py-2" name="edit_cat">
+            Update Category
+        </button>
+
     </form>
+
+</div>
+
 </div>

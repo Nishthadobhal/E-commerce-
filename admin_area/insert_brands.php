@@ -8,36 +8,46 @@ if(isset($_POST['insert_brand'])){
   $query="select * from `brands` where brand_title='$brand_tit'";
   $result2=mysqli_query($con,$query);
 $number=mysqli_num_rows($result2);
-  if($number>0)
-{
-echo "<script>alert('data already present in database') </script>";
+ if($number>0){
+  echo "<script>alert('Brand already exists')</script>";
+  echo "<script>window.location.href='insert_product.php';</script>";
 }
   else{
   //query likhni hai jo database ke andr dalegi value ko
 $insert_query="insert into `brands` (brand_title) values ('$brand_tit')";
 $result=mysqli_query($con,$insert_query);
 if($result){
-  //added js
-  echo "<script> alert('data has been entered succesfully') </script>";
+  echo "<script>alert('Brand added successfully')</script>";
+  echo "<script>window.location.href='insert_product.php';</script>";
 }
 }
 }
 
 ?>
 
-<h2 class="text-center">Insert Brands</h2>
+<div class="d-flex justify-content-center mt-4">
 
-<form action="" method="post" class="mb-2">
-<div class="input-group w-90 mb-2">
-    <span class="input-group-text bg-info"><i class="fa-solid fa-receipt"></i></span>
-    <input type="text" class="form-control" name="brand_title" placeholder="Insert Brands"
-    aria-label="Brands" aria-describedby="basic-addon1">
-</div>
+    <div class="card shadow-lg p-4" style="max-width: 450px; width: 100%; border-radius: 14px;">
 
-<div class="input-group w-10 mb-2 m-auto">
-  <!-- <input type="submit" class="form-control bg-info" name="insert_cat"  value="Insert Categories"
-    aria-label="username" aria-describedby="basic-addon1" class="bg-info"> -->
- 
-<button type="submit" name="insert_brand"  value="Insert brand"  class="bg-info p-2 my-3 border-0 ">Insert Brands</button>
+        <h4 class="text-center mb-4">Add New Brand</h4>
+
+        <form action="" method="post">
+
+            <div class="mb-3">
+                <label class="form-label">Brand Name</label>
+                <input type="text" 
+                       class="form-control py-2" 
+                       name="brand_title" 
+                       placeholder="Enter brand name" 
+                       required>
+            </div>
+
+            <button type="submit" name="insert_brand" class="btn btn-dark w-100 py-2 mt-2">
+                Add Brand
+            </button>
+
+        </form>
+
+    </div>
+
 </div>
-</form>

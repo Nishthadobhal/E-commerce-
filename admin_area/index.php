@@ -1,165 +1,254 @@
 <?php
+include('admin_auth.php');
 include('../insert/connect.php');
 include('../function/common_function.php');
-include('admin_auth.php');
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-<!--bootstrap css link-->
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-<!--css file link-->
-<link href="../style.css" rel="stylesheet">
-<!--font awesome link-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <style>
-    .admin_image{
-    width: 100px;
-   object-fit: contain; 
-}
-.footer{
-    position:absolute;
-    bottom:0;
-}
 body{
     overflow-x:hidden;
 }
-.product_img{
-    width: 100px;
-     object-fit: contain;
+.navbar {
+    padding: 14px 20px !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
+/* Sidebar */
+.sidebar {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #1f1f1f, #2c2c2c);
+    padding: 20px 15px;
+    margin-top: 10px;
+
+     border-radius: 10px;
+}
+
+.sidebar a {
+    color: #ccc;
+    padding: 10px;
+    display: block;
+    border-radius: 6px;
+        margin-bottom: 8px;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background-color: #0dcaf0;
+    color: #000;
+}
+
+.sidebar .btn {
+    margin-top: 20px;
+}
+
+.sidebar h5 {
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+.container-fluid {
+    margin-top: 10px;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Card */
+.dashboard-card{
+    border-radius: 12px;
+}
+
 </style>
-    </head>
+
+</head>
 <body>
-<!--navbar-->
-<div class="container-fluid p-0">
-    <!-- first child -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-info">
-        <div class="container-fluid">
-            <img  src="../logo_php.png" class="logo">
-            <nav class="navbar navbar-expand-lg">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Welcome Guest</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </nav>
 
-<!-- second child -->
-<div class="bg-light">
-    <h3 class="text-center p-2">Manage Details</h3>
-</div>
-
-<!-- third child -->
-<div class="row">
-    <div class="col-md-12 bg-secondary p-1 d-flex align-items-center">
-        <div class="p-3">
-            <a href="#"> <img src="../pineapple.jpg" alt="" class="admin_image"></a>
-            <p class="text-light text-center">Admin Name</p>
-        </div>
-        <div class="button text-center">
-<button class="my-3"><a href="insert_product.php" class="nav-link text-light bg-info my-1">Insert Products</a></button>
-<button><a href="index.php?view_products" class="nav-link text-light bg-info my-1">View Products</a></button>
-<button><a href="index.php?insert_categories" class="nav-link text-light bg-info my-1">Insert Categories</a></button>
-<button><a href="index.php?view_categories" class="nav-link text-light bg-info my-1">View Categories</a></button>
-<button><a href="index.php?insert_brands" class="nav-link text-light bg-info my-1">Insert Brands</a></button>
-<button><a href="index.php?view_brands" class="nav-link text-light bg-info my-1">View Brands</a></button>
-<button><a href="index.php?list_orders" class="nav-link text-light bg-info my-1">All Orders</a></button>
-<button><a href="index.php?list_payments" class="nav-link text-light bg-info my-1">All Payments</a></button>
-<button><a href="index.php?list_users" class="nav-link text-light bg-info my-1">List Users</a></button>
-<button><a href="admin_logout.php" class="nav-link text-light bg-info my-1">LogOut</a></button>
-
-        </div>
-    </div>
-</div>
-
-<!-- fourth child -->
-<div class="container my-3">
-    <?php 
-if(isset($_GET['insert_categories'])){
-     // This block will run if the user clicked that link
-  include('insert_categories.php') ; 
-}
-
-if(isset($_GET['insert_brands'])){
-     // This block will run if the user clicked that link
-  include('insert_brands.php') ; 
-}
-if(isset($_GET['view_products'])){
-     // This block will run if the user clicked that link
-  include('view_products.php') ; 
-}
-if(isset($_GET['edit_products'])){
-     // This block will run if the user clicked that link
-  include('edit_products.php') ; 
-}
-if(isset($_GET['delete_product'])){
-     // This block will run if the user clicked that link
-  include('delete_product.php') ; 
-}
-if(isset($_GET['view_categories'])){
-     // This block will run if the user clicked that link
-  include('view_categories.php') ; 
-}
-
-if(isset($_GET['view_brands'])){
-     // This block will run if the user clicked that link
-  include('view_brands.php') ; 
-}
-if(isset($_GET['edit_category'])){
-     // This block will run if the user clicked that link
-  include('edit_category.php') ; 
-}
-if(isset($_GET['delete_category'])){
-     // This block will run if the user clicked that link
-  include('delete_category.php') ; 
-}
-
-if(isset($_GET['edit_brand'])){
-     // This block will run if the user clicked that link
-  include('edit_brand.php') ; 
-}
-if(isset($_GET['delete_brand'])){
-     // This block will run if the user clicked that link
-  include('delete_brand.php') ; 
-}
-
-if(isset($_GET['list_orders'])){
-     // This block will run if the user clicked that link
-  include('list_orders.php') ; 
-}
-if(isset($_GET['list_payments'])){
-     // This block will run if the user clicked that link
-  include('list_payments.php') ; 
-}
-if(isset($_GET['list_users'])){
-     // This block will run if the user clicked that link
-  include('list_users.php') ; 
-}
-
-?>
-</div>
-
+<!--  NAVBAR -->
 <?php
-include("../insert/footer.php");
-?>
 
+include('./navbar.php');
+?>
+<!-- MOBILE TOGGLE -->
+<nav class="navbar navbar-dark bg-dark d-md-none">
+    <div class="container-fluid">
+        <span class="navbar-brand">Admin Panel</span>
+        <button class="btn btn-outline-light" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
+            ☰
+        </button>
+    </div>
+</nav>
+
+<div class="container-fluid">
+<div class="row">
+
+    <!--  SIDEBAR -->
+    <div class="col-md-2 sidebar p-3 collapse d-md-block" id="sidebarMenu">
+
+        <h5 class="text-white text-center mb-4">Admin Panel</h5>
+
+        <a href="index.php">Dashboard</a>
+        <a href="insert_product.php">Insert Products</a>
+        <a href="index.php?view_products">View Products</a>
+        <a href="index.php?insert_categories">Insert Categories</a>
+        <a href="index.php?view_categories">View Categories</a>
+        <a href="index.php?insert_brands">Insert Brands</a>
+        <a href="index.php?view_brands">View Brands</a>
+        <a href="index.php?list_orders">All Orders</a>
+        <a href="index.php?list_payments">All Payments</a>
+        <a href="index.php?list_users">List Users</a>
+
+        <a href="admin_logout.php" class="btn btn-danger mt-4 w-100">
+            Logout
+        </a>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="col-md-10 p-4">
+
+        <h3 class="mb-4">Manage Details</h3>
+
+        <div class="p-4 ">
+
+        <?php
+
+        //  DEFAULT DASHBOARD
+        if(
+            !isset($_GET['insert_categories']) &&
+            !isset($_GET['insert_brands']) &&
+            !isset($_GET['view_products']) &&
+            !isset($_GET['edit_products']) &&
+            !isset($_GET['delete_product']) &&
+            !isset($_GET['view_categories']) &&
+            !isset($_GET['view_brands']) &&
+            !isset($_GET['edit_category']) &&
+            !isset($_GET['delete_category']) &&
+            !isset($_GET['edit_brand']) &&
+            !isset($_GET['delete_brand']) &&
+            !isset($_GET['list_orders']) &&
+            !isset($_GET['list_payments']) &&
+            !isset($_GET['list_users'])
+        ){
+            include('dashboard.php');
+        }
+
+        // 🔽 ROUTING
+        if(isset($_GET['insert_categories'])){
+            include('insert_categories.php');
+        }
+
+        if(isset($_GET['insert_brands'])){
+            include('insert_brands.php');
+        }
+
+        if(isset($_GET['view_products'])){
+            include('view_products.php');
+        }
+
+        if(isset($_GET['edit_products'])){
+            include('edit_products.php');
+        }
+
+        if(isset($_GET['delete_product'])){
+            include('delete_product.php');
+        }
+
+        if(isset($_GET['view_categories'])){
+            include('view_categories.php');
+        }
+
+        if(isset($_GET['view_brands'])){
+            include('view_brands.php');
+        }
+
+        if(isset($_GET['edit_category'])){
+            include('edit_category.php');
+        }
+
+        if(isset($_GET['delete_category'])){
+            include('delete_category.php');
+        }
+
+        if(isset($_GET['edit_brand'])){
+            include('edit_brand.php');
+        }
+
+        if(isset($_GET['delete_brand'])){
+            include('delete_brand.php');
+        }
+
+        if(isset($_GET['list_orders'])){
+            include('list_orders.php');
+        }
+
+        if(isset($_GET['delete_order'])){
+    $delete_id = (int) $_GET['delete_order'];
+
+    $delete_query = "DELETE FROM `user_orders` WHERE order_id=$delete_id";
+    $result = mysqli_query($con, $delete_query);
+
+    if($result){
+        echo "<script>alert('Order deleted successfully')</script>";
+        echo "<script>window.open('index.php?list_orders','_self')</script>";
+    }
+}
+
+        if(isset($_GET['list_payments'])){
+            include('list_payments.php');
+        }
+
+if(isset($_GET['delete_payment'])){
+    $delete_id = (int) $_GET['delete_payment'];
+
+    $delete_query = "DELETE FROM user_payments WHERE payment_id=$delete_id";
+    mysqli_query($con, $delete_query);
+
+    echo "<script>alert('Payment deleted successfully')</script>";
+    echo "<script>window.location.href='index.php?list_payments'</script>";
+}
+
+        if(isset($_GET['list_users'])){
+            include('list_users.php');
+        }
+
+        if(isset($_GET['delete_user'])){
+    $delete_id = (int) $_GET['delete_user'];
+
+    $delete_query = "DELETE FROM user_table WHERE user_id=$delete_id";
+    mysqli_query($con, $delete_query);
+
+    echo "<script>alert('User deleted successfully')</script>";
+    echo "<script>window.location.href='index.php?list_users'</script>";
+}
+        ?>
+
+        </div>
+
+    </div>
 
 </div>
+</div>
 
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 
-
-
-
-
- <!-- bootstrap js link -->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </body>
+<?php 
+include('../insert/footer.php')
+?>
 </html>

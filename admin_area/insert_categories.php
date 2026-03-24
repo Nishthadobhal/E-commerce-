@@ -20,19 +20,29 @@ if($result){
 }
 }
 ?>
-<h2 class="text-center">
-    Insert Categories
-</h2>
+<div class="d-flex justify-content-center mt-4">
 
-<form action="" method="post" class="mb-2">
-<div class="input-group w-90 mb-2">
-    <span class="input-group-text bg-info"><i class="fa-solid fa-receipt"></i></span>
-    <input type="text" class="form-control" name="cat_title" placeholder="Insert Categories">
-</div>
+    <div class="card shadow-lg p-4" style="max-width: 450px; width: 100%; border-radius: 14px;">
 
-<div class="input-group w-10 mb-2 m-auto">
-  <input type="submit" class=" bg-info border-0 p-2 my-3" name="insert_cat"  value="Insert Categories">
-<!--  
-<button class="bg-info p-2 my-3 border-0">Insert Categories</button> -->
+        <h4 class="text-center mb-4">Add New Category</h4>
+
+        <form action="" method="post">
+
+            <div class="mb-3">
+                <label class="form-label">Category Name</label>
+                <input type="text" 
+                       class="form-control py-2" 
+                       name="cat_title" 
+                       placeholder="Enter category name" 
+                       required>
+            </div>
+
+            <button type="submit" name="insert_cat" class="btn btn-dark w-100 py-2 mt-2">
+                Add Category
+            </button>
+
+        </form>
+
+    </div>
+
 </div>
-</form>

@@ -9,15 +9,48 @@ include('admin_auth.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<style>
+    img:hover {
+    transform: scale(1.1);
+    transition: 0.2s;
+}
+
+td, th {
+    border-right: 1px solid #dee2e6;
+}
+
+td:last-child, th:last-child {
+    border-right: none;
+}
+table {
+    border-radius: 10px;
+    overflow: hidden;
+}
+</style>
+<body>
+ <?php
+include('admin_auth.php');
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 integrity="sha512-bUg4tPLEB1Y1gfD4kD93Bp5ixesFtN4cM6bq8oJElcWkCAr/gbP1rZMZ5gkAA2k+/9ogYfZ0Ad1aeS1jZg=="
 crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <body>
-   <h3 class="text-center text-success">All Products</h3>
-   <table class="table table-bordered mt-5">
-<thead class="bg-info">
+   <h3 class="text-center  text-dark mb-4 ">All Products</h3>
+   <div class="table-responsive">
+<table class="table table-hover align-middle text-center mt-3">
+<thead class="table-dark">
     <tr>
         <th>Product ID</th>
         <th>Product Title</th>
@@ -44,10 +77,11 @@ $status=$row['status'];
 $number++;
 ?>
 
-   <tr class='text-center'>
+   <tr class='text-center align-middle'>
         <td> <?php echo $number; ?> </td>
          <td> <?php echo $product_title; ?> </td>
-          <td> <img src='./product_images/<?php echo $product_image1; ?>' class='product_img ' /> </td>
+          <td><img src="./product_images/<?php echo $product_image1; ?>" 
+     style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px;"></td>
            <td><?php echo $product_price; ?>/-</td>
       
            <td>
@@ -77,5 +111,8 @@ echo $rows_count;
  
 </tbody>
    </table>
+   </div>
+</body>
+</html>
 </body>
 </html>

@@ -1,8 +1,9 @@
 <?php
 include('admin_auth.php');
 if(isset($_GET['edit_brand'])){
+    $edit_brand = $_GET['edit_brand'] ?? null;
 $edit_brand=$_GET['edit_brand'];
-$get_brand="Select * from `brands` where brand_id=$edit_brand ";
+$get_brand="Select * from `brands` where brand_id=$edit_brand";
 $result=mysqli_query($con,$get_brand);
 $row=mysqli_fetch_assoc($result);
 $brand_title=$row['brand_title'];
@@ -10,23 +11,46 @@ $brand_title=$row['brand_title'];
 }
 if(isset($_POST['edit_brd'])){
 $brd_title=$_POST['brand_title'];
-$update_query="update `brands` set brand_title='$brd_title' where 
-brand_id=$edit_brand ";
-$result_brd=mysqli_query($con,$update_query);
-if($result_brd){
-     echo "<script>alert('brand updated successfully')</script>";
-      echo "<script>window.open('./index.php?view_brands','_self')</script>";
+
+if($brd_title==''){
+    echo "<script>alert('Brand title cannot be empty')</script>";
 }
+else{
+    $update_query="update `brands` set brand_title='$brd_title' where brand_id=$edit_brand";
+    $result_brd=mysqli_query($con,$update_query);
+
+    if($result_brd){
+        echo "<script>alert('Brand updated successfully')</script>";
+        echo "<script>window.open('index.php?view_brands','_self')</script>";
+    }
+}
+
+
 }
 ?>
-<div class="container mt-3">
-    <h1 class="text-center">Edit Brand</h1>
-    <form action="" method="post" class="text=center">
-<div class="form-outline mb-4 w-50 m-auto">
-    <label for="brand_title" class="form-label">Brand Title</label>
-<input type="text" name="brand_title" id="brand_title" class="form-control"
-require="required" value='<?php echo $brand_title ?>'>
-</div>
-<input type="submit" value="update brand" class="btn btn-info px-3 mb-3" name="edit_brd">
+<div class="d-flex justify-content-center mt-4">
+
+<div class="card shadow p-4" style="max-width: 450px; width: 100%; border-radius: 12px;">
+
+    <h4 class="text-center mb-4">Edit Brand</h4>
+
+    <form action="" method="post">
+
+        <div class="mb-3">
+            <label class="form-label">Brand Title</label>
+            <input type="text" 
+                   name="brand_title" 
+                   class="form-control"
+                   value="<?php echo $brand_title ?>" 
+                   required>
+        </div>
+
+        <button class="btn btn-dark w-100 py-2" name="edit_brd">
+            Update Brand
+        </button>
+
     </form>
+
+</div>
+
 </div>
