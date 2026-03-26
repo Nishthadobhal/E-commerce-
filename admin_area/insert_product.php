@@ -1,9 +1,11 @@
 <?php
+session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include('../insert/connect.php');
 include('admin_auth.php');
 if(isset($_POST['insert_product'])){
+    $_SESSION['form_data'] = $_POST;
     $product_title=$_POST['product_title'];
      $description=$_POST['description'];
       $product_keywords=$_POST['product_keywords'];
@@ -35,7 +37,13 @@ category_id,brand_id,product_image1,product_price,date,status) values ('$product
 '$product_category','$product_brands','$product_image1','$product_price',NOW(),'$product_status') ";
 $result_query=mysqli_query($con,$insert_products);
 if($result_query){
-  echo "<script>alert('Product inserted successfully')</script>";
+    unset($_SESSION['form_data']);
+
+    echo "<script>
+    alert('Product inserted successfully');
+    localStorage.removeItem('productFormData');
+    window.location.href='insert_product.php';
+    </script>";
 }
 
 }
@@ -62,25 +70,26 @@ if($result_query){
         <h3 class="text-center mb-4">Insert Product</h3>
 
 <!--forms-->
+
 <form action="" method="post" enctype="multipart/form-data">
 <div  class="form-outline mb-4 w-100 m-auto">
     <label for="product_title" class="form-label">Product title</label>
     <input type="text" name="product_title" id="product_title" class="form-control" placeholder="Enter product title" autocomplete="off"
-    required="required">
+value="<?php echo $_SESSION['form_data']['product_title'] ?? '' ?>"  required>
 </div>
 
 <!--description-->
 <div class="form-outline mb-4 w-100 m-auto">
     <label for="Description" class="form-label">Product Description</label>
     <input type="text" name="description" id="description" class="form-control" placeholder="Enter product Description" autocomplete="off"
-    required="required">
+      value="<?php echo $_SESSION['form_data']['description'] ?? '' ?>"   required>
 </div>
 
 <!--product keyword-->
 <div class="form-outline mb-4 w-100 m-auto">
     <label for="Product_keywords" class="form-label">Product keywords</label>
     <input type="text" name="product_keywords" id="product_keywords" class="form-control" placeholder="Enter product keywords" autocomplete="off"
-    required="required">
+    value="<?php echo $_SESSION['form_data']['product_keywords'] ?? '' ?>  ">
 </div>
 
 <!--categories-->
@@ -89,9 +98,11 @@ if($result_query){
     <div class="d-flex justify-content-between align-items-center mb-2">
         <label class="form-label mb-0">Product Category</label>
 
-        <a href="index.php?insert_categories" class="btn btn-sm btn-outline-dark">
-            + Add Category
-        </a>
+      <a href="index.php?insert_categories&source=product" 
+   onclick="saveFormData()"
+   class="btn btn-sm btn-outline-dark">
+   + Add Category
+</a>
     </div>
 
     <select name="product_category" class="form-select">
@@ -117,9 +128,11 @@ if($result_query){
     <div class="d-flex justify-content-between align-items-center mb-2">
         <label class="form-label mb-0">Product Brand</label>
 
-        <a href="index.php?insert_brands" class="btn btn-sm btn-outline-dark">
-            + Add Brand
-        </a>
+       <a href="index.php?insert_brands&source=product" 
+   onclick="saveFormData()"
+   class="btn btn-sm btn-outline-dark">
+   + Add Brand
+</a>
     </div>
 
     <select name="product_brands" class="form-select">
@@ -143,7 +156,7 @@ if($result_query){
 <div class="form-outline mb-4 w-100 m-auto">
     <label for="Product_image1" class="form-label">Product image 1</label>
     <input type="file" name="product_image1" id="product_image1" class="form-control" 
-    required="required">
+    required>
 </div>
 
 
@@ -155,7 +168,7 @@ if($result_query){
     <label for="Product_price" class="form-label">Product price
     </label>
     <input type="text" name="product_price" id="product_price" class="form-control" placeholder="Enter product price" autocomplete="off"
-    required="required">
+     value="<?php echo $_SESSION['form_data']['product_price'] ?? '' ?> " required>
 </div>
 
 
@@ -166,6 +179,42 @@ if($result_query){
 
 
 </form>
+<script>
+function saveFormData(){
+    const form = document.querySelector("form");
+
+    let data = {};
+
+    new FormData(form).forEach((value, key) => {
+        data[key] = value;
+    });
+
+    localStorage.setItem("productFormData", JSON.stringify(data));
+}
+
+window.onload = function(){
+    let data = localStorage.getItem("productFormData");
+
+    if(data){
+        data = JSON.parse(data);
+
+        for(let key in data){
+            if(document.getElementsByName(key)[0]){
+                let field = document.getElementsByName(key)[0];
+
+if(field){
+    if(field.tagName === "SELECT"){
+        field.value = data[key];
+    } else {
+        field.value = data[key];
+    }
+}
+            }
+        }
+    }
+}
+
+</script>
         </div>
     </div>
 </body>

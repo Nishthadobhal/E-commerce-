@@ -15,7 +15,13 @@ else{
   $insert_query="insert into `categories` (category_title) values ('$category_title') ";
 $result=mysqli_query($con,$insert_query);
 if($result){
-  echo "<script>alert('category has been inserted succesfully') </script>";
+    echo "<script>alert('Category added successfully')</script>";
+
+    if(isset($_GET['source']) && $_GET['source']=='product'){
+        echo "<script>window.open('insert_product.php','_self')</script>";
+    } else {
+        echo "<script>window.open('index.php?view_categories','_self')</script>";
+    }
 }
 }
 }
