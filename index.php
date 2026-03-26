@@ -138,7 +138,7 @@ include('navbar.php');
 
 <h4 class="section-title mb-4">All Products</h4>
 
-<div class="row g-4 justify-content-center">
+<div class="row g-4 ">
 
 <?php
 

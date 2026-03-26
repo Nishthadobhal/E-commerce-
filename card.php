@@ -142,7 +142,7 @@ class="form-control w-50 mx-auto">
 }
 }
 else{
-echo "<h2 class='text-center text-danger'>Cart is empty</h2>";
+echo "<h2 class='text-center '>Cart is empty</h2>";
 }
 
 ?>
@@ -193,7 +193,7 @@ Subtotal:
 
 <input type='submit' value='Continue Shopping'
 name='Continue_Shopping'
-class='btn btn-info'>
+class='btn btn-dark  px-4 py-2'>
 
 <a href='users_area/payment.php' class='btn btn-secondary'>
 Checkout
@@ -210,7 +210,7 @@ else{
 echo "
 <input type='submit' value='Continue Shopping'
 name='Continue_Shopping'
-class='btn btn-info'>
+class='btn btn-dark px-4 py-2'>
 ";
 
 }

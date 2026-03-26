@@ -13,7 +13,7 @@ if(!function_exists('cart_item_num')){
 
 <!-- LOGO -->
 <a class="navbar-brand d-flex align-items-center" href="/ecommerce/index.php">
-<img src="/ecommerce/cartify_logo.png" class="logo">
+<img src="/ecommerce/cartify-logo.svg" class="logo" alt="Cartify Logo">
 </a>
 
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
@@ -38,7 +38,7 @@ if(!function_exists('cart_item_num')){
 <?php 
 if($current_page != 'user_login.php' && $current_page != 'user_registration.php'){ 
 ?>
-<form class="d-flex mx-auto w-50" role="search" action="/ecommerce/index.php" method="get">
+<form class="d-flex w-100 mt-2" role="search" action="/ecommerce/index.php" method="get">
 <input class="form-control me-2" type="search" placeholder="Search products..." name="search_data">
 
 <button class="btn btn-outline-light" type="submit" name="search_data_product">

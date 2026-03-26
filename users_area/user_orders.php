@@ -44,7 +44,7 @@ if(mysqli_num_rows($result_orders)==0){
 ?>
 
 <div class="card shadow p-4 rounded-4 mt-2">
-
+<div class="table-responsive">
 <table class="table table-bordered table-hover align-middle text-center mt-3">
 
 <thead class="table-dark">
@@ -93,7 +93,7 @@ $number++;
 
 </tbody>
 </table>
-
+</div>
 </div>
 </div>
 

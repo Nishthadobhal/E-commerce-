@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 100" width="520" height="100">
+
+  <!-- ICON GROUP: C with integrated cart -->
+  <g id="cartify-icon" transform="translate(8, 6)">
+
+    <!-- The bold "C" arc — cx=44, cy=44, r=36 -->
+    <!-- Arc from ~70° to ~290° (open on right side) -->
+    <path
+      d="M 68.5 14.5 A 36 36 0 1 0 68.5 73.5"
+      fill="none"
+      stroke="#D4AF37"
+      stroke-width="12"
+      stroke-linecap="round"
+    />
+
+    <!-- Cart basket sits inside the opening of the C -->
+    <!-- Basket: a clean rounded rect -->
+    <rect x="60" y="30" width="30" height="22" rx="4" fill="#D4AF37"/>
+
+    <!-- Cart handle: extends right from the top-right of basket -->
+    <polyline
+      points="90,36 100,36 103,26 58,26 60,30"
+      fill="none"
+      stroke="#D4AF37"
+      stroke-width="5"
+      stroke-linejoin="round"
+      stroke-linecap="round"
+    />
+
+    <!-- Wheels -->
+    <circle cx="67" cy="58" r="5" fill="#D4AF37"/>
+    <circle cx="83" cy="58" r="5" fill="#D4AF37"/>
+
+    <!-- Subtle vertical dividers on basket for detail -->
+    <line x1="70" y1="32" x2="70" y2="50" stroke="white" stroke-width="1.8" stroke-opacity="0.45" stroke-linecap="round"/>
+    <line x1="80" y1="32" x2="80" y2="50" stroke="white" stroke-width="1.8" stroke-opacity="0.45" stroke-linecap="round"/>
+
+  </g>
+
+  <!-- WORDMARK -->
+  <!-- Using a serif+weight contrast: bold C, light 'artify' -->
+  <text
+    x="132"
+    y="71"
+    font-family="'Palatino Linotype', 'Palatino', 'Book Antiqua', Georgia, serif"
+    font-size="58"
+    font-weight="700"
+    fill="#D4AF37"
+    letter-spacing="-2"
+  >C</text>
+  <text
+    x="166"
+    y="71"
+    font-family="'Palatino Linotype', 'Palatino', 'Book Antiqua', Georgia, serif"
+    font-size="58"
+    font-weight="400"
+    fill="#D4AF37"
+    letter-spacing="0"
+  >artify</text>
+
+  <!-- Hairline underline — elegant finishing touch -->
+  <line x1="132" y1="78" x2="506" y2="78" stroke="#D4AF37" stroke-width="1" stroke-opacity="0.35"/>
+
+</svg>
